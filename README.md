@@ -1,8 +1,8 @@
 # Game-of-Life
 
- git clone https://github.com/shhhRakesh/Game-of-Life.git
-  cd Game-of-Life
-  run gol.rb
+ git clone https://github.com/shhhRakesh/Game-of-Life.git <br>
+  cd Game-of-Life <br>
+  ruby gol.rb <br>
 
 
   Console will prompt with different options for different kind of patterns(taken from conway's game of life wiki page) and one with custom.<br>
