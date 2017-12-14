@@ -1,17 +1,20 @@
 def game_of_life(name, size, generations, initial_life=nil)
-  board = new_board size
-  seed board, size, initial_life
-  print_board board, name, 0
+  board = new_board(size)
+  seed(board, size, initial_life)
+  print_board( board, name, 0)
   reason = generations.times do |gen|
-    new = evolve board, size
-    print_board new, name, gen+1
-    break :all_dead if barren? new, size
-    break :static   if board == new
+    new = evolve( board, size)
+    print_board(new, name, gen+1)
+    break :all_dead if (barren? new, size)
+    break :static   if (board == new)
     board = new
   end
-  if    reason == :all_dead then puts "All Dead"
-  elsif reason == :static   then puts "No Movement"
-  else                           puts "Specified Lifetime Ended"
+  if (reason == :all_dead) then
+    puts "All Dead"
+  elsif (reason == :static)   then
+    puts "No Movement"
+  else
+    puts "Specified Lifetime Ended"
   end
   puts
 end
@@ -21,19 +24,31 @@ def new_board(n)
 end
 
 def seed(board, n, points=nil)
-  if points.nil?
+  if (points.nil?)
     # randomly seed board
     indices = []
-    n.times {|x| n.times {|y| indices << [x,y] }}
-    indices.shuffle[0,10].each {|x,y| board[y][x] = 1}
+    n.times {|x|
+      n.times{|y|
+        indices << [x,y]
+      }
+    }
+    indices.shuffle[0,10].each {|x,y|
+      board[y][x] = 1
+    }
   else
-    points.each {|x, y| board[y][x] = 1}
+    points.each {|x, y|
+      board[y][x] = 1
+    }
   end
 end
 
 def evolve(board, n)
-  new = new_board n
-  n.times {|i| n.times {|j| new[i][j] = fate board, i, j, n}}
+  new = new_board(n)
+  n.times {|i|
+    n.times {|j|
+      new[i][j] = fate(board, i, j, n)
+    }
+  }
   new
 end
 
