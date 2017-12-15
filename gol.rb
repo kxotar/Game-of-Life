@@ -33,11 +33,11 @@ def seed(board, n, points=nil)
       }
     }
     indices.shuffle[0,10].each {|x,y|
-      board[y][x] = 1
+      board[x][y] = 1
     }
   else
     points.each {|x, y|
-      board[y][x] = 1
+      board[x][y] = 1
     }
   end
 end
@@ -82,7 +82,6 @@ def print_board(m, name, generation)
     puts
   }
 end
-
 
 puts "Please Enter the Serial for Pattern You Want to See : - "
 puts " Enter 1 for : Blinker."
